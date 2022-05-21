@@ -53,27 +53,6 @@ std::string Utils::strtoupper(std::string str)
 	return ret;
 }
 
-void Utils::bufferHandler(char *buffer, int cs) {
-
-	std::string cmd;
-	std::string buf;
-	std::string temp;
-	std::map<size_t, std::string> args;
-	size_t      start;
-	size_t      end;
-
-	buf = buffer;
-	start = std::string(buffer).find_first_not_of(' ');
-	end = std::string(buffer).find_first_of(" \r\n", start);
-	cmd = std::string(buf).substr(start, end - start);
-	start = std::string(buffer).find_first_of(" ", start);
-	end = std::string(buffer).find_first_of("\r\n", start);
-	temp = std::string(buffer).substr(start + 1, end - start);
-	args = map_split(temp, ' ');
-	Command ret(cmd, args, cs);
-	ret.runCommand();
-}
-
 bool Utils::buff_is_onsize(char *buffer, int cs) {
 
 	if (std::string(buffer) == "\r\n")
@@ -85,4 +64,31 @@ bool Utils::buff_is_onsize(char *buffer, int cs) {
 		return false;
 	}
 	return true;
+}
+
+void Utils::sendMessage(User *usr, std::string message) {
+
+	std::string blue = "\033[1;36m";
+	std::string red = "\x1b[31m";
+	std::string white = "\033[0m";
+
+	std::string msg = red + "Anonymous IRC => " + usr->getNickname() + ": " + white + message;
+	send(usr->getSocket(), msg.c_str(), msg.length() + 1, 0);
+}
+
+void Utils::sendConectMessage(User *usr) {
+
+	std::string mess = "You are connected to the Anonymous IRC Network\n";
+	send(usr->getSocket(), mess.c_str(), 22, 0);
+}
+
+void Utils::printMessage(User *usr, std::string message) {
+
+	std::string blue = "\033[1;36m";
+	std::string red = "\x1b[31m";
+	std::string white = "\033[0m";
+
+	std::cout << red << "=> " << usr->getNickname() << ": "  << white << message
+	<< std::endl;
+
 }

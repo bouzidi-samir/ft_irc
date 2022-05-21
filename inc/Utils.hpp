@@ -13,6 +13,9 @@ namespace Utils
 	std::map<size_t, std::string> map_split(std::string const &str, const char delim);
 	bool buff_is_onsize(char *buffer, int cs);
 	void bufferHandler(char *buffer, int cs);	
+	void sendMessage(User *usr, std::string message);
+	void sendConectMessage(User *usr);
+	void printMessage(User *usr, std::string message);
 }
 
 #endif

@@ -2,9 +2,10 @@
 
 User::User() {}
 
-User::User(int fd)
+User::User(int fd, std::string pass)
 : _socket(fd)
 {
+	_pass = pass;
 	_connected = false;
 	this->nickname = "Guest";
 	this->username = "";
@@ -15,7 +16,7 @@ User::User(int fd)
 
 User	*User::clone() const
 {
-	return (new User(_socket));
+	return (new User(_socket, _pass));
 }
 
 User &User::operator=(User const &ref) {
@@ -37,6 +38,8 @@ std::string User::getUsername() const {return this->username;}
 
 std::string User::getNickname() const {return this->nickname;}
 
+std::string User::getPass() const {return this->_pass;}
+
 void User::setNickname(std::string nick) {this->nickname= nick;}
 
 void User::setUsername(std::string nick) {this->username= nick;}
@@ -47,4 +50,9 @@ void User::setRealname(std::string nick) {this->realname= nick;}
 
 void User::setConnected(bool statue) {this->_connected = statue;}
 
+void User::setAuthentified(bool statue) {this->_authentified = statue;}
+
 bool	User::isConnected() const  {return this->_connected;}
+
+bool	User::isAuthentified() const  {return this->_authentified;}
+

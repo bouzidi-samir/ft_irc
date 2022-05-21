@@ -6,15 +6,16 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/20 15:07:51 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 01:16:28 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/server.hpp"
 
-Server::Server(int port) {
+Server::Server(int port, std::string password) {
 	
 	this->port = port;
+	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
 	_commandList["OPER"] = &OperCommand;
@@ -123,7 +124,7 @@ void Server::bufferParse(char *buffer, int cs) {
 	args = Utils::map_split(temp, ' ');
 	if (isCommand(cmd) == true)
 	{
-		Command ret(cmd, args, cs);
+		Command ret(cmd, args, getUserBysock(cs));
 		ret.runCommand();
 	}
 	else
@@ -144,7 +145,7 @@ void	Server::readClient(int cs)
 	{
 		if (Utils::buff_is_onsize(buffer, cs) == false)
 			return;
-		//std::cout << buffer << std::endl;
+	//	std::cout << buffer << std::endl;
 		bufferParse(buffer, cs);
 		std::memset(buffer, 0, BUF_SIZE + 1);
 	}
@@ -157,11 +158,10 @@ void					Server::addUser()
 
 	int cs = accept(_sockfd, (struct sockaddr *)&_address, &_cslen);
 	fcntl(cs, F_SETFL, O_NONBLOCK);
-	User temp(cs);
+	User temp(cs, this->_password);
 	_users.push_back(temp.clone());
 	printf("New client #%d from %s:%d\n", cs, inet_ntoa(_address.sin_addr), ntohs(_address.sin_port));
-	message = this->getUserBysock(cs)->getNickname() + "\n";
-	//send(cs, message.c_str(), NICK_SIZE, 0);
+	Utils::sendMessage(&temp, "THE ANONYMOUS IRC NETWORK.\n");
 }
 
 void    Server::fdDelete() {
@@ -183,3 +183,17 @@ void    Server::fdDelete() {
 		deleteList[i] = 0;
 }
 
+void	Server::freeServer() {
+
+	std::vector<User*>::iterator it = _users.begin();
+	std::vector<User*>::iterator ite = _users.end();
+
+	close(_sockfd);
+	for (; it != ite; it++) {
+
+		close((*it)->getSocket());
+		delete (*it);
+		_users.erase(it);
+	}
+	_users.clear();
+}

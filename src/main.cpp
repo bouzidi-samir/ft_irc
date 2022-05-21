@@ -18,8 +18,8 @@ void checkArguments(int ac, char **av) {
         }
     }
     
-    if (std::strcmp(av[2], PASSWORD)) 
-        throw	std::runtime_error(err_mess);
+    //if (std::strcmp(av[2], PASSWORD)) 
+    //throw	std::runtime_error(err_mess);
 }
 
 
@@ -32,10 +32,9 @@ int main (int ac, char **av) {
         std::cout << e.what() << std::endl;
         return 0;
     }
-
-    Server irc = Server(std::atoi(av[1]));
+    Server irc = Server(std::atoi(av[1]) , std::string(av[2]));
     irc.initServer();
     irc.launch();
-    close(irc.getSocket());
+    irc.freeServer();
     return (0);
 } 

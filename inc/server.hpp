@@ -5,9 +5,6 @@
 #define BUF_SIZE	1024
 #define DATE_SIZE	26
 #define NICK_SIZE	9
-#define FD_FREE	0
-#define FD_SERV	1
-#define FD_CLIENT	2
 #include <iostream>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -20,11 +17,9 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 
-//#include "Channel.hpp"
 #include "User.hpp"
 #include "Utils.hpp"
 #include "Command.hpp"
-//#include "CommandList.hpp"
 
 class Command;
 class User;
@@ -33,6 +28,7 @@ class Server {
 
     private:
         int port;
+        std::string _password;
         int _sockfd;
         struct sockaddr_in	_address; 
         socklen_t _cslen;
@@ -44,7 +40,7 @@ class Server {
         std::map<std::string, void (*)(Command) > _commandList;
      
     public:
-        Server(int port);
+        Server(int port, std::string password);
         void initServer();
         void launch();
         void  addUser();
@@ -55,6 +51,7 @@ class Server {
         void    readClient(int cs);
         void    bufferParse(char *buffer, int cs);
         bool    isCommand(std::string cmd);
+        void    freeServer();
         typedef std::vector<User *>::iterator   u_iterator;
 };
 
