@@ -6,16 +6,16 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 19:41:19 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/21 18:43:12 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 01:34:27 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMANDLIST_HPP
 #define COMMANDLIST_HPP
 
-#include "./User.hpp"
-#include "./server.hpp"
-#include "./Command.hpp"
+#include "../User.hpp"
+#include "../server.hpp"
+#include "../Command.hpp"
 
 class Command;
 

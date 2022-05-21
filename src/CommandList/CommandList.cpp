@@ -6,11 +6,11 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 19:40:02 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 00:34:24 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 01:40:06 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/CommandList.hpp"
+#include "../../inc/CommandList/CommandList.hpp"
 
 void PassCommand(Command cmd) 
 {

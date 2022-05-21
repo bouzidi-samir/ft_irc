@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 #include "./User.hpp"
-#include "./CommandList.hpp"
+#include "./CommandList/CommandList.hpp"
 
 
 class Channel {

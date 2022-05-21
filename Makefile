@@ -1,5 +1,5 @@
 NAME = ircserv
-SRCS = src/main.cpp src/server.cpp src/Utils.cpp src/User.cpp src/Command.cpp src/CommandList.cpp src/Channel.cpp
+SRCS = src/main.cpp src/server.cpp src/Utils.cpp src/User.cpp src/Command.cpp src/CommandList/CommandList.cpp src/Channel.cpp
 CLFAGS = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)
 
