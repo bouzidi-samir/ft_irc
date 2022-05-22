@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:52 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:56:55 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:23:58 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <map>
 #include <vector>
 #include "./User.hpp"
-#include "./CommandList/CommandList.hpp"
+#include "./CommandList.hpp"
 
 
 class Channel {

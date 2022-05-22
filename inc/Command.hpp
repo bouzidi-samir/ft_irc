@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:01 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:57:05 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:23:34 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <vector>
 #include "User.hpp"
 #include "Utils.hpp"
-#include "./CommandList/CommandList.hpp"
+#include "./CommandList.hpp"
 
 class User;
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PassCommand.cpp                                    :+:      :+:    :+:   */
+/*   PassCmd.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:59:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:00:06 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:21:21 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/CommandList/CommandList.hpp"
+#include "../../inc/CommandList.hpp"
 
 void PassCommand(Command cmd) 
 {

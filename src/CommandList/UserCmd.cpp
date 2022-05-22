@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UserCommand.cpp                                    :+:      :+:    :+:   */
+/*   UserCmd.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:40 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:59:07 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:21:11 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/CommandList/CommandList.hpp"
+#include "../../inc/CommandList.hpp"
 
 //Commande USER: Premiere commande qui est censé etre envoiyée par le client.
 //Avec cette commande le client m'envoit ses infos je les récupère et les stock.
