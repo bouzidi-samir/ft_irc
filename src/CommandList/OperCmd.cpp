@@ -6,13 +6,13 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:02 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:21:27 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:36:19 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/CommandList.hpp"
 
-void OperCommand(Command cmd) {
+//void OperCommand(Command cmd) {
 
    
-}
+//}

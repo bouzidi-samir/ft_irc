@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:57:28 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:30:34 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class User {
         User(int sock, std::string pass);
         User *clone() const;
         User &operator=(User const &ref);
-        int const getSocket() const;
-        int const getType() const;
+        int getSocket() const;
+        int getType() const;
         bool    isConnected() const;
         bool    isAuthentified() const;
         std::string getNickname() const;

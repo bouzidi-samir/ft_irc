@@ -9,7 +9,6 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
-	_commandList["OPER"] = &OperCommand;
 }
 
 std::string Command::getCommand() const {return _command;}

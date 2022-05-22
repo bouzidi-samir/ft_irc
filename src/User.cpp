@@ -28,7 +28,7 @@ User &User::operator=(User const &ref) {
 	return *this;
 }
 
-int const User::getSocket() const {return this->_socket;}
+int User::getSocket() const {return this->_socket;}
 
 std::string User::getHostname() const {return this->hostname;}
 

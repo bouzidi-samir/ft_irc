@@ -3,9 +3,9 @@ NAME = ircserv
 SRCS = src/main.cpp src/server.cpp src/Utils.cpp src/User.cpp\
 	src/Command.cpp src/CommandList/CommandList.cpp src/Channel.cpp\
 	src/CommandList/NickCmd.cpp src/CommandList/UserCmd.cpp\
-	src/CommandList/PassCmd.cpp src/CommandList/OperCmd.cpp	    
+	src/CommandList/PassCmd.cpp 	    
 
-CLFAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJS = $(SRCS:.cpp=.o)
 

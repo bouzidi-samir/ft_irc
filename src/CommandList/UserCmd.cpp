@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:40 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:21:11 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:35:12 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 void UserCommand(Command cmd) {
     
-    int senderSocket = cmd.getSender()->getSocket();
     std::string messageA = ":Unauthorized\n";
     std::string messageB = ":Not enough parameters\n";
     bool isConnected = cmd.getSender()->isConnected();

@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/22 01:16:28 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:37:37 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 Server::Server(int port, std::string password) {
 	
 	this->port = port;
+	this->_password = password;
 	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
-	_commandList["OPER"] = &OperCommand;
 }
 
 int 	Server::getSocket() const {return _sockfd;}
@@ -41,8 +41,7 @@ void Server::initServer()
 	struct rlimit	rlp;
 	struct protoent		*proto;
 	struct sockaddr_in address;
-	int addrlen = sizeof(address);
-
+	
 	if (getrlimit(RLIMIT_NOFILE, &rlp) < 0)
 		Utils::error("getrlimit: failed", true);
 	_maxfd = rlp.rlim_cur;

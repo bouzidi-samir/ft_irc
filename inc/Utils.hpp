@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:57:37 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:33:36 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ namespace Utils
 {
 	void error(std::string message, bool stop);
 	std::vector<std::string> split(std::string str, std::string limit);
-	std::string strtoupper(std::string str);
 	std::map<size_t, std::string> map_split(std::string const &str, const char delim);
 	bool buff_is_onsize(char *buffer, int cs);
 	void bufferHandler(char *buffer, int cs);	

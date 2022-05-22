@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:21:35 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:34:41 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ bool    nickError(Command cmd)
 
 void NickCommand(Command cmd) {
     
-    int senderSocket = cmd.getSender()->getSocket();
-    bool isConnected = cmd.getSender()->isConnected();
-
     if (nickError(cmd) == false)
         return;
     cmd.getSender()->setNickname(cmd.getArgs()[0]);

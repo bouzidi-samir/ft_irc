@@ -44,15 +44,6 @@ std::vector<std::string> Utils::split(std::string str, std::string limit)
 	return parts;
 }
 
-std::string Utils::strtoupper(std::string str)
-{
-	std::string ret;
-
-	for (int i = 0; i < ret.length(); ++i)
-    	ret[i] = toupper(ret[i]);
-	return ret;
-}
-
 bool Utils::buff_is_onsize(char *buffer, int cs) {
 
 	if (std::string(buffer) == "\r\n")

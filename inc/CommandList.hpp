@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 19:41:19 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:23:09 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/22 16:37:50 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Command;
 void PassCommand(Command cmd);
 void NickCommand(Command cmd);
 void UserCommand(Command cmd);
-void OperCommand(Command cmd);
 
 
 

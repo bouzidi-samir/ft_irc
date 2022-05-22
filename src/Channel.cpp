@@ -6,3 +6,4 @@ Channel::Channel(std::string name, std::string topic)
 _topic = topic;
  }
 
+
