@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   CommandList.hpp                                    :+:      :+:    :+:   */
+/*   OperCmd.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 19:41:19 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:12:54 by sbouzidi         ###   ########.fr       */
+/*   Created: 2022/05/22 16:01:02 by sbouzidi          #+#    #+#             */
+/*   Updated: 2022/05/22 16:12:39 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMANDLIST_HPP
-#define COMMANDLIST_HPP
+#include "../../inc/CommandList/CommandList.hpp"
 
-#include "../User.hpp"
-#include "../server.hpp"
-#include "../Command.hpp"
+void OperCommand(Command cmd) {
 
-class Command;
-
-void PassCommand(Command cmd);
-void NickCommand(Command cmd);
-void UserCommand(Command cmd);
-void OperCommand(Command cmd);
-
-
-
-#endif
+   
+}
