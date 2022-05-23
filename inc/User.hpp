@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:30:34 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:50:10 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@
 #include <map>
 #include <vector>
 
+#include "./server.hpp"
+
+class Server;
+
 class User {
 
     private:
+        Server *_serv;
         bool _connected;
         bool _authentified;
         int _socket;

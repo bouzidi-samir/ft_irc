@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/22 16:37:37 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:26:06 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,15 @@ void Server::bufferParse(char *buffer, int cs) {
 	cmd = std::string(buf).substr(start, end - start);
 	start = std::string(buffer).find_first_of(" ", start);
 	end = std::string(buffer).find_first_of("\r\n", start);
-	temp = std::string(buffer).substr(start + 1, end - start);
+	temp = std::string(buffer).substr(start + 1, (end - start) );
 	args = Utils::map_split(temp, ' ');
 	if (isCommand(cmd) == true)
 	{
 		Command ret(cmd, args, getUserBysock(cs));
 		ret.runCommand();
 	}
-	else
-		std::cout << cmd << std::endl;
+	//else
+		//std::cout << cmd << std::endl;
 }
 
 void	Server::readClient(int cs)
@@ -144,7 +144,6 @@ void	Server::readClient(int cs)
 	{
 		if (Utils::buff_is_onsize(buffer, cs) == false)
 			return;
-	//	std::cout << buffer << std::endl;
 		bufferParse(buffer, cs);
 		std::memset(buffer, 0, BUF_SIZE + 1);
 	}
