@@ -69,8 +69,11 @@ void Utils::sendMessage(User *usr, std::string message) {
 
 void Utils::sendConectMessage(User *usr) {
 
-	std::string mess = "You are connected to the Anonymous IRC Network\n";
-	send(usr->getSocket(), mess.c_str(), 22, 0);
+	std::string blue = "\033[1;36m";
+	std::string red = "\x1b[31m";
+	std::string white = "\033[0m";
+	std::string mess = blue + "Welcome " + usr->getNickname() + " You are connected to the Anonymous IRC Network!\n" + white;
+	send(usr->getSocket(), mess.c_str(), mess.length() + 1, 0);
 }
 
 void Utils::printMessage(User *usr, std::string message) {
@@ -82,4 +85,13 @@ void Utils::printMessage(User *usr, std::string message) {
 	std::cout << red << "=> " << usr->getNickname() << ": "  << white << message
 	<< std::endl;
 
+}
+
+bool Utils::checkconnection(User *usr) {
+
+	if (usr->isConnected() || !usr->isAuthentified())
+		return false;
+	usr->setConnected(true);
+	Utils::sendConectMessage(usr);
+	return true;
 }

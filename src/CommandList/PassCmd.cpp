@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:59:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:21:21 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:10:55 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void PassCommand(Command cmd)
         Utils::sendMessage(cmd.getSender(), "Wrong password.\n");
         return;
     }
-    else
-        cmd.getSender()->setAuthentified(true);
+    cmd.getSender()->setAuthentified(true);
+    Utils::checkconnection(cmd.getSender());
 }

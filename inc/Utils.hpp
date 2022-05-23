@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 11:49:23 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:02:22 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ namespace Utils
 	void sendMessage(User *usr, std::string message);
 	void sendConectMessage(User *usr);
 	void printMessage(User *usr, std::string message);
+	bool checkconnection(User *usr);
 }
 
 #endif
