@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 15:57:16 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:01:47 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ class Server {
         int     getSocket() const;
         void    commandManager(User *user, std::vector<std::string> cmd);
         User	*getUserBysock(int cs);
+        std::vector<User*> getUserlist() const;
         void    fdDelete();
         void    readClient(int cs);
         void    bufferParse(char *buffer, int cs);

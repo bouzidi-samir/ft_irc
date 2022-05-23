@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/23 10:26:06 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:25:28 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ Server::Server(int port, std::string password) {
 }
 
 int 	Server::getSocket() const {return _sockfd;}
+
+std::vector<User*> Server::getUserlist() const {return _users;};
 
 User					*Server::getUserBysock(int cs)
 {
@@ -119,7 +121,7 @@ void Server::bufferParse(char *buffer, int cs) {
 	cmd = std::string(buf).substr(start, end - start);
 	start = std::string(buffer).find_first_of(" ", start);
 	end = std::string(buffer).find_first_of("\r\n", start);
-	temp = std::string(buffer).substr(start + 1, (end - start) );
+	temp = std::string(buffer).substr(start + 1, (end - start) - 1 );
 	args = Utils::map_split(temp, ' ');
 	if (isCommand(cmd) == true)
 	{
@@ -156,7 +158,7 @@ void					Server::addUser()
 
 	int cs = accept(_sockfd, (struct sockaddr *)&_address, &_cslen);
 	fcntl(cs, F_SETFL, O_NONBLOCK);
-	User temp(cs, this->_password);
+	User temp(cs, this->_password, this);
 	_users.push_back(temp.clone());
 	printf("New client #%d from %s:%d\n", cs, inet_ntoa(_address.sin_addr), ntohs(_address.sin_port));
 	Utils::sendMessage(&temp, "THE ANONYMOUS IRC NETWORK.\n");

@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 11:50:10 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:56:57 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class User {
 
     public:
         User();
-        User(int sock, std::string pass);
+        User(int sock, std::string pass, Server *serv);
         User *clone() const;
         User &operator=(User const &ref);
         int getSocket() const;
@@ -47,7 +47,8 @@ class User {
         std::string getUsername() const;
         std::string getRealname() const;
         std::string getHostname() const;
-         std::string getPass() const;
+        std::string getPass() const;
+        Server *getServ() const;
         void setNickname(std::string nick);
         void setUsername(std::string nick);
         void setRealname(std::string nick);

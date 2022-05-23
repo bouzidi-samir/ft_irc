@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 11:47:31 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:54:53 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,30 @@ bool    nickError(Command cmd)
     return true;
 }
 
-//bool isAvailable(Command cmd) {
+bool isAvailable(Command cmd) {
 
- 
-
+    std::vector<User*> Userlist = cmd.getSender()->getServ()->getUserlist();
     
-//}
+    std::vector<User*>::iterator it = Userlist.begin();
+	std::vector<User*>::iterator ite = Userlist.end();
+    std::string nickToTest = cmd.getArgs()[0];
+    std::cout << cmd.getSender()->getServ()->getUserlist().size()  << std::endl;
+    for ( ; it != ite; it++) {
+        if ( (*it)->getNickname() == nickToTest /*&& (*it)->isConnected()*/)
+        {
+            Utils::sendMessage(cmd.getSender(), "This nickname is already use.\n");
+            return false;
+        }
+    }
+    return true;
+}
 
 void NickCommand(Command cmd) {
     
     if (nickError(cmd) == false)
         return;
-   // if (isAvailable(cmd) == false)
-     //   return;
+    if (isAvailable(cmd) == false)
+        return;
     cmd.getSender()->setNickname(cmd.getArgs()[0]);
     Utils::sendMessage(cmd.getSender(), "Your nickname has been set.\n");
 }
