@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:52 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/22 16:26:42 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:24:30 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Channel {
             std::vector<User*> _members;
 
     public:
-            Channel(std::string name, std::string topic);
+            Channel(std::string name);
 
 };
 

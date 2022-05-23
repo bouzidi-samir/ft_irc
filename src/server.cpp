@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/23 13:25:28 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:45:04 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ Server::Server(int port, std::string password) {
 	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
+	_commandList["JOIN"] = &JoinCommand;
 }
 
 int 	Server::getSocket() const {return _sockfd;}
 
 std::vector<User*> Server::getUserlist() const {return _users;};
+
+std::map<std::string, Channel*> Server::getChannelist() const {return _channelList;};
 
 User					*Server::getUserBysock(int cs)
 {

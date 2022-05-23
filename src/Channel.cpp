@@ -1,9 +1,8 @@
 #include "../inc/Channel.hpp"
 
-Channel::Channel(std::string name, std::string topic)
+Channel::Channel(std::string name)
 {
- _name = name;
-_topic = topic;
+    _name = name;
  }
 
 

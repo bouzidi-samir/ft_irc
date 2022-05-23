@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 12:01:47 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:05:04 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@
 #include "User.hpp"
 #include "Utils.hpp"
 #include "Command.hpp"
+#include "Channel.hpp"
 
+class Channel;
 class Command;
 class User;
 
@@ -50,7 +52,8 @@ class Server {
         int deleteList[30];
         std::vector<User*> _users;
         std::map<std::string, void (*)(Command) > _commandList;
-     
+        std::map<std::string, Channel*> _channelList;
+
     public:
         Server(int port, std::string password);
         void initServer();
@@ -60,6 +63,7 @@ class Server {
         void    commandManager(User *user, std::vector<std::string> cmd);
         User	*getUserBysock(int cs);
         std::vector<User*> getUserlist() const;
+        std::map<std::string, Channel*> getChannelist() const;
         void    fdDelete();
         void    readClient(int cs);
         void    bufferParse(char *buffer, int cs);
