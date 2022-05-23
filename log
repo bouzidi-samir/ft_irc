@@ -1,0 +1,9 @@
+<< CAP LS
+<< PASS pass
+<< NICK alois
+<< USER alois alois 127.0.0.1 :Aloïs
+>> : 001 Guest :Welcome to the Internet Relay Network Guest!@
+<< MODE Guest +i
+<< WHOIS alois
+<< PING 
+<< JOIN #test

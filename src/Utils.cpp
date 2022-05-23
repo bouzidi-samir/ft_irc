@@ -59,20 +59,15 @@ bool Utils::buff_is_onsize(char *buffer, int cs) {
 
 void Utils::sendMessage(User *usr, std::string message) {
 
-	std::string blue = "\033[1;36m";
-	std::string red = "\x1b[31m";
-	std::string white = "\033[0m";
+	(void)message;
 
-	std::string msg = red + "Anonymous IRC => " + usr->getNickname() + ": " + white + message;
+	std::string msg = ":" + usr->getHostname() + " 001 " + usr->getNickname() + " :Welcome to the Internet Relay Network " + usr->getNickname() + "!" + usr->getUsername() + "@" + usr->getHostname() + "\r\n";
 	send(usr->getSocket(), msg.c_str(), msg.length() + 1, 0);
 }
 
 void Utils::sendConectMessage(User *usr) {
 
-	std::string blue = "\033[1;36m";
-	std::string red = "\x1b[31m";
-	std::string white = "\033[0m";
-	std::string mess = blue + "Welcome " + usr->getNickname() + " You are connected to the Anonymous IRC Network!\n" + white;
+	std::string mess = ":" + usr->getHostname() + " 001 " + usr->getNickname() + ":Welcome to the Internet Relay Network " + usr->getNickname() + "!" + usr->getUsername() + "@" + usr->getHostname() + "\r\n";
 	send(usr->getSocket(), mess.c_str(), mess.length() + 1, 0);
 }
 
