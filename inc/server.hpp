@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 12:01:47 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:08:51 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 #include <vector>
 #include <netdb.h>
 #include <arpa/inet.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#include <cstring>
+#include <cstdio>
 
 #include "User.hpp"
 #include "Utils.hpp"

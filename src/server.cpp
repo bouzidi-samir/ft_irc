@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/23 13:25:28 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:03:41 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ User					*Server::getUserBysock(int cs)
 		if ((*it)->getSocket() == cs)
 			return (*it);
 	}
-	return (nullptr);
+	return (NULL);
 }
 
 void Server::initServer()
