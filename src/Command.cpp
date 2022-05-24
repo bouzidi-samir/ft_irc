@@ -26,8 +26,8 @@ void Command::runCommand() {
 	{
 		if((*it).first == _command)
 		{
-			Utils::printMessage(_sender, _command);
 			(*it).second(*this);
+			Utils::printMessage(_sender, _command);
 		}
 	}
 
