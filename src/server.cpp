@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/24 11:55:18 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:19:48 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,7 @@ void					Server::addUser()
 	fcntl(cs, F_SETFL, O_NONBLOCK);
 	User temp(cs, this->_password, this);
 	_users.push_back(temp.clone());
-	printf("New client #%d from %s:%d\n", cs, inet_ntoa(_address.sin_addr), ntohs(_address.sin_port));
-	//Utils::sendMessage(&temp, "THE ANONYMOUS IRC NETWORK.\n");
+	//printf("New client #%d from %s:%d\n", cs, inet_ntoa(_address.sin_addr), ntohs(_address.sin_port));
 }
 
 void    Server::fdDelete() {

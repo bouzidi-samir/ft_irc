@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/24 11:17:14 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:27:13 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ bool isAvailable(Command cmd) {
 
 void NickCommand(Command cmd) {
     
-    if (nickError(cmd) == false)
-        return;
-    if (isAvailable(cmd) == false)
-        return;
+//    if (nickError(cmd) == false)
+//        return;
+//    if (isAvailable(cmd) == false)
+//        return;
     cmd.getSender()->setNickname(cmd.getArgs()[0]);
     //if (cmd.getSender()->isConnected())
     //    Utils::sendMessage(cmd.getSender(), "Your nickname has been changed.\n");

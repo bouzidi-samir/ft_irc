@@ -73,7 +73,7 @@ void Utils::sendConectMessage(User *usr) {
 	std::string red = "\x1b[31m";
 	std::string white = "\033[0m";
 	std::string mess = blue + "Welcome " + usr->getNickname() + " You are connected to the Anonymous IRC Network!\n" + white;
-	std::string irssi = ":irc.example.com 001 borja :Welcome to IRC\n";
+	std::string irssi = ":irc.example.com 001 " + usr->getNickname() + " :Welcome to IRC\n";
 	send(usr->getSocket(), irssi.c_str(), irssi.length() + 1, 0);
 
 }

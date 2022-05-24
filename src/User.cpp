@@ -8,7 +8,7 @@ User::User(int fd, std::string pass, Server *serv)
 	_pass = pass;
 	_serv = serv;
 	_connected = false;
-	this->nickname = "Guest";
+	this->nickname = "";
 	this->username = "";
 	this->realname = "";
 	this->hostname = "";
