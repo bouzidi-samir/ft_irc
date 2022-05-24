@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 15:08:51 by asebrech         ###   ########.fr       */
+/*   Updated: 2022/05/24 11:27:03 by asebrech         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 #include "User.hpp"
 #include "Utils.hpp"
 #include "Command.hpp"
+#include "Replies.hpp"
 
 class Command;
 class User;

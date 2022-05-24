@@ -61,7 +61,9 @@ void Utils::sendMessage(User *usr, std::string message) {
 
 	(void)message;
 
-	std::string msg = ":" + usr->getHostname() + " 001 " + usr->getNickname() + " :Welcome to the Internet Relay Network " + usr->getNickname() + "!" + usr->getUsername() + "@" + usr->getHostname() + "\r\n";
+	std::string msg = ":" + usr->getHostname() + " 001 " + usr->getNickname()
+		+ " :Welcome to the Internet Relay Network " + usr->getNickname()
+		+ "!" + usr->getUsername() + "@" + usr->getHostname() + "\r\n";
 	send(usr->getSocket(), msg.c_str(), msg.length() + 1, 0);
 }
 
@@ -87,6 +89,6 @@ bool Utils::checkconnection(User *usr) {
 	if (usr->isConnected() || !usr->isAuthentified())
 		return false;
 	usr->setConnected(true);
-	Utils::sendConectMessage(usr);
+	rpl_welcome(*usr);
 	return true;
 }
