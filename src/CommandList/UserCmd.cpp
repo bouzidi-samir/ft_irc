@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:40 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/24 10:26:52 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/24 10:51:59 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void UserCommand(Command cmd) {
         Utils::sendMessage(cmd.getSender(), "Not enough parameters.\n");
         return;
     }
-	if (cmd.getSender()->getUsername() == "Guest")
+	if (cmd.getSender()->getUsername() == "")
 	{
-		cmd.getSender()->setUsername(cmd.getArgs()[0]);
+        cmd.getSender()->setUsername(cmd.getArgs()[0]);
 		cmd.getSender()->setHostname(cmd.getArgs()[1]);
 		cmd.getSender()->setRealname(cmd.getArgs()[2]);
 	}

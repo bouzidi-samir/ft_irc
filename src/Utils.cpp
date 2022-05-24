@@ -89,9 +89,18 @@ void Utils::printMessage(User *usr, std::string message) {
 
 bool Utils::checkconnection(User *usr) {
 
+	std::string blue = "\033[1;36m";
+	std::string red = "\x1b[31m";
+	std::string white = "\033[0m";
+	
 	if (usr->isConnected() || !usr->isAuthentified())
 		return false;
 	usr->setConnected(true);
 	Utils::sendConectMessage(usr);
+	
+	std::cout << blue << usr->getNickname() << " is connected with the realname: " << usr->getRealname() 
+	<< " and the hostname " << usr->getHostname() << "." << white << std::endl;
+	
+	
 	return true;
 }
