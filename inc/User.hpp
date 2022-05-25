@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 11:56:57 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:10:59 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ class User {
 
     private:
         Server *_serv;
-        bool _connected;
+        bool _registred;
         bool _authentified;
+        bool _connected;
         int _socket;
         std::string nickname;
         std::string username;
@@ -43,6 +44,7 @@ class User {
         int getType() const;
         bool    isConnected() const;
         bool    isAuthentified() const;
+        bool    isRegistred() const;
         std::string getNickname() const;
         std::string getUsername() const;
         std::string getRealname() const;
@@ -53,6 +55,7 @@ class User {
         void setUsername(std::string nick);
         void setRealname(std::string nick);
         void setHostname(std::string nick);
+        void setRegistred(bool statue);
         void setConnected(bool statue);
         void setAuthentified(bool statue);
 };

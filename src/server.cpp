@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/24 15:19:48 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/25 23:41:34 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void Server::initServer()
 	address.sin_family = AF_INET;
 	address.sin_port = htons(this->port);
 	
-	_sockfd = socket(PF_INET, SOCK_STREAM, proto->p_proto);
+	_sockfd = socket(AF_INET, SOCK_STREAM, proto->p_proto);
 	if (bind(_sockfd, (const struct sockaddr*)&address, sizeof(address)) < 0)
 	 	Utils::error("bind error", true);
 	if (listen(_sockfd, 42) == -1)
@@ -109,40 +109,42 @@ bool Server::isCommand(std::string cmd) {
 	return false;
 }
 
-void Server::bufferParse(char *buffer, int cs) {
+void Server::bufferParse(std::vector<std::string> list, int cs) {
 
-	std::string cmd;
-	std::string buf;
-	std::string temp;
-	std::map<size_t, std::string> args;
-	size_t      start;
-	size_t      end;
-
-	buf = buffer;
-	start = std::string(buffer).find_first_not_of(' ');
-	end = std::string(buffer).find_first_of(" \r\n", start);
-	cmd = std::string(buf).substr(start, end - start);
-	start = std::string(buffer).find_first_of(" ", start);
-	end = std::string(buffer).find_first_of("\r\n", start);
-	temp = std::string(buffer).substr(start + 1, (end - start));
-	args = Utils::map_split(temp, ' ');
-	args[args.size() - 1] = args[args.size() - 1].substr(0, args[0].size() - 1);
-	if (isCommand(cmd) == true)
-	{
-		Command ret(cmd, args, getUserBysock(cs));
-		ret.runCommand();
+	std::vector<std::string>::iterator it = list.begin();
+	std::vector<std::string>::iterator ite = list.end();
+	for ( ; it != ite; it++) {
+		std::string buffer = *it;
+		std::string cmd;
+		std::string buf;
+		std::string temp;
+		std::map<size_t, std::string> args;
+		size_t      start = 0;
+		size_t      end;
+		buf = *it;
+		end = buffer.find_first_of(" \r\n", start);
+		cmd = buf.substr(0, end);
+		start = std::string(buffer).find_first_of(" ", start);
+		end = std::string(buffer).find_first_of("\r\n", start);
+		temp = std::string(buffer).substr(start + 1, (end - start));	
+		args = Utils::map_split(temp, ' ');
+		//args[args.size() - 1] = args[args.size() - 1].substr(0, args[0].size() - 1);
+		if (isCommand(cmd) == true)
+		{
+			Command ret(cmd, args, getUserBysock(cs));
+			ret.runCommand();
+		}	
 	}
-	//else
-		//std::cout << cmd << std::endl;
+	list.clear();
 }
 
 void	Server::readClient(int cs)
 {
-	char	buffer[BUF_SIZE];
+	char	buffer[1024];
 
 	if ((recv(cs, buffer, BUF_SIZE, 0)) <= 0)
 	{	
-		std::memset(buffer, 0, BUF_SIZE + 1);
+		//std::memset(buffer, 0, BUF_SIZE + 1);
 		std::cout << "Client " << cs << " is deconnected" << std::endl; 
 		deleteList[cs] = 1;			
 	}
@@ -150,8 +152,10 @@ void	Server::readClient(int cs)
 	{
 		if (Utils::buff_is_onsize(buffer, cs) == false)
 			return;
-		bufferParse(buffer, cs);
-		std::memset(buffer, 0, BUF_SIZE + 1);
+		//std::cout << buffer << std::endl;
+		std::vector<std::string> list = Utils::split(std::string(buffer), "\r\n");
+		bufferParse(list, cs);
+		//std::memset(buffer, 0, BUF_SIZE + 1);
 	}
 	std::memset(buffer, 0, BUF_SIZE + 1);
 }
@@ -164,7 +168,6 @@ void					Server::addUser()
 	fcntl(cs, F_SETFL, O_NONBLOCK);
 	User temp(cs, this->_password, this);
 	_users.push_back(temp.clone());
-	//printf("New client #%d from %s:%d\n", cs, inet_ntoa(_address.sin_addr), ntohs(_address.sin_port));
 }
 
 void    Server::fdDelete() {

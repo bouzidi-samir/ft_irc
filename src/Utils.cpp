@@ -69,13 +69,10 @@ void Utils::sendMessage(User *usr, std::string message) {
 
 void Utils::sendConectMessage(User *usr) {
 
-	std::string blue = "\033[1;36m";
-	std::string red = "\x1b[31m";
-	std::string white = "\033[0m";
-	std::string mess = blue + "Welcome " + usr->getNickname() + " You are connected to the Anonymous IRC Network!\n" + white;
-	std::string irssi = ":irc.example.com 001 " + usr->getNickname() + " :Welcome to IRC\n";
-	send(usr->getSocket(), irssi.c_str(), irssi.length() + 1, 0);
-
+	std::string irssi2 = ":" + usr->getNickname() + " 001 " + 
+	usr->getNickname() + " :Welcome to the Internet Relay Network " +  usr->getNickname() + "!" +
+	 usr->getNickname() + "@" + usr->getHostname() + " \r\n.";
+	send(usr->getSocket(), irssi2.c_str(), irssi2.length() + 1, 0);
 }
 
 void Utils::printMessage(User *usr, std::string message) {
@@ -95,14 +92,12 @@ bool Utils::checkconnection(User *usr) {
 	std::string red = "\x1b[31m";
 	std::string white = "\033[0m";
 	
-	if (usr->isConnected() || !usr->isAuthentified())
+	if (!usr->isAuthentified() || !usr->isRegistred())
 		return false;
 	usr->setConnected(true);
 	Utils::sendConectMessage(usr);
-	
 	std::cout << blue << usr->getNickname() << " is connected with the realname: " << usr->getRealname() 
 	<< " and the hostname " << usr->getHostname() << "." << white << std::endl;
-	
 	
 	return true;
 }

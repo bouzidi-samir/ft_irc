@@ -26,10 +26,9 @@ void Command::runCommand() {
 	{
 		if((*it).first == _command)
 		{
+			Utils::printMessage(_sender, "Command Received: " + _command + " " + _args[0]);
 			(*it).second(*this);
-			//Utils::printMessage(_sender, "Command Received: " + _command + " " + _args[0]);
 		}
 	}
-
 }
 

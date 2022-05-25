@@ -8,6 +8,8 @@ User::User(int fd, std::string pass, Server *serv)
 	_pass = pass;
 	_serv = serv;
 	_connected = false;
+	_registred = false;
+	_authentified = false;
 	this->nickname = "";
 	this->username = "";
 	this->realname = "";
@@ -53,9 +55,12 @@ void User::setRealname(std::string nick) {this->realname= nick;}
 
 void User::setConnected(bool statue) {this->_connected = statue;}
 
+void User::setRegistred(bool statue) {this->_registred = statue;}
+
 void User::setAuthentified(bool statue) {this->_authentified = statue;}
 
 bool	User::isConnected() const  {return this->_connected;}
 
 bool	User::isAuthentified() const  {return this->_authentified;}
 
+bool	User::isRegistred() const  {return this->_registred;}
