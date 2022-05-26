@@ -67,14 +67,6 @@ void Utils::sendMessage(User *usr, std::string message) {
 	send(usr->getSocket(), msg.c_str(), msg.length() + 1, 0);
 }
 
-void Utils::sendConectMessage(User *usr) {
-
-	std::string irssi2 = ":" + usr->getNickname() + " 001 " + 
-	usr->getNickname() + " :Welcome to the Internet Relay Network " +  usr->getNickname() + "!" +
-	 usr->getNickname() + "@" + usr->getHostname() + " \r\n.";
-	send(usr->getSocket(), irssi2.c_str(), irssi2.length() + 1, 0);
-}
-
 void Utils::printMessage(User *usr, std::string message) {
 
 	std::string blue = "\033[1;36m";
@@ -83,21 +75,5 @@ void Utils::printMessage(User *usr, std::string message) {
 
 	std::cout << red << "=> " << usr->getNickname() << ": "  << white << message
 	<< std::endl;
-
 }
 
-bool Utils::checkconnection(User *usr) {
-
-	std::string blue = "\033[1;36m";
-	std::string red = "\x1b[31m";
-	std::string white = "\033[0m";
-	
-	if (!usr->isAuthentified() || !usr->isRegistred())
-		return false;
-	usr->setConnected(true);
-	Utils::sendConectMessage(usr);
-	std::cout << blue << usr->getNickname() << " is connected with the realname: " << usr->getRealname() 
-	<< " and the hostname " << usr->getHostname() << "." << white << std::endl;
-	
-	return true;
-}

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   CommandList.hpp                                    :+:      :+:    :+:   */
+/*   Replies.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 19:41:19 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 00:10:07 by sbouzidi         ###   ########.fr       */
+/*   Created: 2022/05/26 22:45:38 by sbouzidi          #+#    #+#             */
+/*   Updated: 2022/05/27 00:37:02 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMANDLIST_HPP
-#define COMMANDLIST_HPP
+#pragma once
 
-#define NICKSIZE 30
 #define PREFIX ":*.ft_irc"
+#define BLUE "\033[1;36m";
+#define RED "\x1b[31m";
+#define WHITE "\033[0m";
 
-#include "User.hpp"
-#include "server.hpp"
-#include "Command.hpp"
-#include "Channel.hpp"
+#include "./Command.hpp"
 
 class Command;
 
-void PassCommand(Command cmd);
-void NickCommand(Command cmd);
-void UserCommand(Command cmd);
-void PingCommand(Command cmd);
-void JoinCommand(Command cmd);
+void RPL_WELCOME(Command cmd);
 
+//Replies for the NICK command:
 
-
-
-#endif
+void ERR_ERRONEUSNICKNAME(Command cmd);
+void ERR_NICKNAMEINUSE(Command cmd);

@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/25 23:41:34 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:00:42 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Server::Server(int port, std::string password) {
 	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
+	_commandList["PING"] = &PingCommand;
 	_commandList["JOIN"] = &JoinCommand;
 }
 
@@ -144,7 +145,6 @@ void	Server::readClient(int cs)
 
 	if ((recv(cs, buffer, BUF_SIZE, 0)) <= 0)
 	{	
-		//std::memset(buffer, 0, BUF_SIZE + 1);
 		std::cout << "Client " << cs << " is deconnected" << std::endl; 
 		deleteList[cs] = 1;			
 	}
@@ -152,10 +152,8 @@ void	Server::readClient(int cs)
 	{
 		if (Utils::buff_is_onsize(buffer, cs) == false)
 			return;
-		//std::cout << buffer << std::endl;
 		std::vector<std::string> list = Utils::split(std::string(buffer), "\r\n");
 		bufferParse(list, cs);
-		//std::memset(buffer, 0, BUF_SIZE + 1);
 	}
 	std::memset(buffer, 0, BUF_SIZE + 1);
 }
@@ -185,7 +183,7 @@ void    Server::fdDelete() {
 			deleteList[(*it)->getSocket()] = 0;
 		}			
 	}
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < 300; i++)
 		deleteList[i] = 0;
 }
 

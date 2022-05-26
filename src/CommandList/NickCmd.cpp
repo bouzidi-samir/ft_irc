@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/26 00:03:12 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:43:09 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ bool    nickError(Command cmd)
 	};
     if (cmd.getArgs()[0].size() > NICK_SIZE + 1)
     {
-        Utils::sendMessage(cmd.getSender(), "Your nickname has to have 9 characters.\n");
+        cmd.getReplies().at(432)(cmd);
         return false;
     }
     for (size_t i = 0; i < cmd.getArgs()[0].size(); i++)
 	{
 		if (std::isdigit(cmd.getArgs()[0][i]))
 		{
-            Utils::sendMessage(cmd.getSender(), "Your nickname can't have digital characters.\n");
+            cmd.getReplies().at(432)(cmd);
             return false;
         }
     }
@@ -45,7 +45,7 @@ bool isAvailable(Command cmd) {
     for ( ; it != ite; it++) {
         if ( (*it)->getNickname() == nickToTest && (*it)->isConnected())
         {
-            Utils::sendMessage(cmd.getSender(), "This nickname is already use.\n");
+            cmd.getReplies().at(433)(cmd);
             return false;
         }
     }
@@ -61,6 +61,8 @@ void NickCommand(Command cmd) {
     cmd.getSender()->setNickname(cmd.getArgs()[0]);
     cmd.getSender()->setRegistred(true);
     if (cmd.getSender()->isConnected())
-        Utils::sendMessage(cmd.getSender(), "Your nickname has been changed.\n");
+    {
+        
+    }
     //Utils::checkconnection(cmd.getSender());
 }

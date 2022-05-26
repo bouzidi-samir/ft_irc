@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:40 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/25 23:56:10 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:10:42 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void UserCommand(Command cmd) {
 		cmd.getSender()->setHostname(cmd.getArgs()[2]);
 		cmd.getSender()->setRealname(cmd.getArgs()[3]);
 	}
-    Utils::checkconnection(cmd.getSender());
+    cmd.checkconnection(cmd.getSender());
 }
 

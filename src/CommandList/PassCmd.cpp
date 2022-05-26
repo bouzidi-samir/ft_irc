@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:59:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/26 00:01:51 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 00:12:12 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void PassCommand(Command cmd)
         return;
     }
     cmd.getSender()->setAuthentified(true);
-    Utils::checkconnection(cmd.getSender());
+    cmd.checkconnection(cmd.getSender());
 }

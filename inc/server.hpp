@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/25 21:52:57 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/26 12:52:27 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SERVER_HPP
 
 #define PASSWORD "poutine"
+#define MAX_FD 1000
 #define BUF_SIZE	1024
 #define DATE_SIZE	26
 #define NICK_SIZE	9
@@ -49,7 +50,7 @@ class Server {
         fd_set  _fd_read;
         int _max;
         int _maxfd;
-        int deleteList[30];
+        int deleteList[300];
         std::vector<User*> _users;
         std::map<std::string, void (*)(Command) > _commandList;
         std::map<std::string, Channel*> _channelList;
