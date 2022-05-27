@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 00:43:09 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 15:08:43 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 
 bool    nickError(Command cmd)
 {
-    if (cmd.getArgs().size() != 1)
+    
+    if (!cmd.getArgs().size())
 	{
-	    Utils::sendMessage(cmd.getSender(), "Usage: NICK <nickname>\n");
+		cmd.getReplies().at(431)(cmd);
         return false;
 	};
-    if (cmd.getArgs()[0].size() > NICK_SIZE + 1)
+       
+    std::string nickname = cmd.getArgs()[0];
+        
+    if (nickname.length() > NICK_SIZE)
     {
         cmd.getReplies().at(432)(cmd);
         return false;
     }
-    for (size_t i = 0; i < cmd.getArgs()[0].size(); i++)
+
+    if (!Utils::isLetter(nickname[0]) && !Utils::isSpecial(nickname[0]))
 	{
-		if (std::isdigit(cmd.getArgs()[0][i]))
+        cmd.getReplies().at(432)(cmd);
+        return false;
+    }
+    for (size_t i = 1; i < nickname.length(); i++)
+	{
+		if (!Utils::isLetter(nickname[i]) && !Utils::isSpecial(nickname[i]) && !Utils::isDigit(nickname[i]) && nickname[i] != '-')
 		{
             cmd.getReplies().at(432)(cmd);
             return false;
@@ -56,8 +66,8 @@ void NickCommand(Command cmd) {
     
     if (nickError(cmd) == false)
         return;
-    //if (isAvailable(cmd) == false)
-    //    return;
+    if (isAvailable(cmd) == false)
+        return;
     cmd.getSender()->setNickname(cmd.getArgs()[0]);
     cmd.getSender()->setRegistred(true);
     if (cmd.getSender()->isConnected())

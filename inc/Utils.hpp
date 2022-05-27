@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:36 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 14:02:22 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 14:54:08 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class User;
 namespace Utils
 {
 	void error(std::string message, bool stop);
+	bool isLetter(char c);
+	bool isSpecial(char c);
+	bool isDigit(char c);
 	std::vector<std::string> split(std::string str, std::string limit);
 	std::map<size_t, std::string> map_split(std::string const &str, const char delim);
 	bool buff_is_onsize(char *buffer, int cs);

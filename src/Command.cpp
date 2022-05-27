@@ -14,6 +14,8 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_commandList["JOIN"] = &JoinCommand;
 
 	_replies[1] = &RPL_WELCOME;
+	_replies[2]	= &RPL_HOST;
+	_replies[431] = &ERR_NONICKNAMEGIVEN;
 	_replies[432] = &ERR_ERRONEUSNICKNAME;
 	_replies[433] = &ERR_NICKNAMEINUSE;
 }
@@ -50,6 +52,7 @@ bool Command::checkconnection(User *usr) {
 		return false;
 	usr->setConnected(true);
 	this->getReplies().at(1)(*this);
+	this->getReplies().at(2)(*this);
 	std::cout << blue << usr->getNickname() << " is connected with the realname: " << usr->getRealname() 
 	<< " and the hostname " << usr->getHostname() << "." << white << std::endl;
 	

@@ -9,6 +9,12 @@ void Utils::error(std::string message, bool stop)
 		exit(EXIT_FAILURE);
 }
 
+bool Utils::isLetter(char c) { return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'); }
+
+bool Utils::isSpecial(char c) { return (c >= '[' && c <= '`') || (c >= '{' && c <= '}'); }
+
+bool Utils::isDigit(char c) { return (c >= '0' && c <= '9'); }
+
 std::map<size_t, std::string>  Utils::map_split(std::string const &str, const char delim)
 {
 	size_t                        start;
