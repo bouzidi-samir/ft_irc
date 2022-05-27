@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/26 14:00:42 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:20:39 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ Server::Server(int port, std::string password) {
 	
 	this->port = port;
 	this->_password = password;
+
+	Channel *welcome = new Channel("welcome");
+	
+	_channelList["Welcome"] = welcome;
+	
 	_commandList["PASS"] = &PassCommand;
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
@@ -164,8 +169,10 @@ void					Server::addUser()
 
 	int cs = accept(_sockfd, (struct sockaddr *)&_address, &_cslen);
 	fcntl(cs, F_SETFL, O_NONBLOCK);
-	User temp(cs, this->_password, this);
-	_users.push_back(temp.clone());
+	User *temp = new User(cs, this->_password, this);
+	temp->setChannel(_channelList["Welcome"]);
+	_channelList["Welcome"]->addMember(temp);
+	_users.push_back(temp);
 }
 
 void    Server::fdDelete() {
@@ -200,4 +207,15 @@ void	Server::freeServer() {
 		_users.erase(it);
 	}
 	_users.clear();
+
+	std::map<std::string, Channel*>::iterator it1 = _channelList.begin();
+	std::map<std::string, Channel*>::iterator it1e = _channelList.end();
+
+	for (; it1 != it1e; it1++) {
+
+		delete (it1)->second;
+		_channelList.erase(it1->first);
+	}
+	_channelList.clear();
+
 }

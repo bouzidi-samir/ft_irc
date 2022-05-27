@@ -14,7 +14,6 @@ User::User(int fd, std::string pass, Server *serv)
 	this->username = "";
 	this->realname = "";
 	this->hostname = "";
-	_channel = "General";
 }
 
 User	*User::clone() const
@@ -45,6 +44,8 @@ std::string User::getPass() const {return this->_pass;}
 
 Server *User::getServ() const {return this->_serv;}
 
+Channel *User::getChannel() const {return this->_channel;};
+
 void User::setNickname(std::string nick) {this->nickname= nick;}
 
 void User::setUsername(std::string nick) {this->username= nick;}
@@ -56,6 +57,8 @@ void User::setRealname(std::string nick) {this->realname= nick;}
 void User::setConnected(bool statue) {this->_connected = statue;}
 
 void User::setRegistred(bool statue) {this->_registred = statue;}
+
+void User::setChannel(Channel *channel) {this->_channel = channel;}
 
 void User::setAuthentified(bool statue) {this->_authentified = statue;}
 

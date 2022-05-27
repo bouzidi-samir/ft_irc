@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/25 14:10:59 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/27 16:15:13 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 #include <vector>
 
 #include "./server.hpp"
+#include "./Channel.hpp"
 
 class Server;
+
+class Channel;
 
 class User {
 
@@ -32,7 +35,7 @@ class User {
         std::string username;
         std::string realname;
         std::string hostname;
-        std::string _channel;
+        Channel *_channel;
         std::string _pass;
 
     public:
@@ -50,6 +53,7 @@ class User {
         std::string getRealname() const;
         std::string getHostname() const;
         std::string getPass() const;
+        Channel *getChannel() const;
         Server *getServ() const;
         void setNickname(std::string nick);
         void setUsername(std::string nick);
@@ -58,5 +62,6 @@ class User {
         void setRegistred(bool statue);
         void setConnected(bool statue);
         void setAuthentified(bool statue);
+        void setChannel(Channel *channel);
 };
 
