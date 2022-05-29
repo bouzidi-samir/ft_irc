@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:38 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 14:29:20 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:53:49 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,18 @@ class Command;
 
 void RPL_WELCOME(Command cmd);
 void RPL_HOST(Command cmd);
+void RPL_ENDOFMOTD(Command cmd);
+
+//Replies for MODE:
+
+void RPL_UMODEIS(Command cmd);
+void ERR_USERSDONTMATCH(Command cmd);
+void ERR_UMODEUNKNOWNFLAG(Command cmd);
 
 //Replies for the NICK command:
 
 void ERR_ERRONEUSNICKNAME(Command cmd);
 void ERR_NICKNAMEINUSE(Command cmd);
 void ERR_NONICKNAMEGIVEN(Command cmd);
+void ERR_NEEDMOREPARAMS(Command cmd);
+void NICKCHANGED(Command cmd);

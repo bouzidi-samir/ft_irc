@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/27 16:20:39 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:48:36 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ User					*Server::getUserBysock(int cs)
 	for (; it != ite; it++)
 	{
 		if ((*it)->getSocket() == cs)
+			return (*it);
+	}
+	return (nullptr);
+}
+
+User					*Server::getUserByname(std::string name)
+{
+	std::vector<User*>::iterator it = _users.begin();
+	std::vector<User*>::iterator ite = _users.end();
+
+	for (; it != ite; it++)
+	{
+		if ((*it)->getNickname() == name)
 			return (*it);
 	}
 	return (nullptr);
@@ -194,8 +207,7 @@ void    Server::fdDelete() {
 		deleteList[i] = 0;
 }
 
-void	Server::freeServer() {
-
+void Server::freeServer() {
 	std::vector<User*>::iterator it = _users.begin();
 	std::vector<User*>::iterator ite = _users.end();
 

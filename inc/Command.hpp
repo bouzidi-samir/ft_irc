@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:01 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 00:10:03 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/28 20:56:18 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Command{
     
     public:
         Command(std::string cmd, std::map<size_t, std::string> args, User *usr);
+        void freenode (Command cmd);
         std::string getCommand() const;
         void runCommand();
         void nickError(std::vector<std::string> cmd, User *user);

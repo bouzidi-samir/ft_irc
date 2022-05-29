@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 15:08:43 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/28 15:42:56 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 bool    nickError(Command cmd)
 {
-    
     if (!cmd.getArgs().size())
 	{
 		cmd.getReplies().at(431)(cmd);
         return false;
 	};
-       
+          
     std::string nickname = cmd.getArgs()[0];
         
     if (nickname.length() > NICK_SIZE)
@@ -72,7 +71,7 @@ void NickCommand(Command cmd) {
     cmd.getSender()->setRegistred(true);
     if (cmd.getSender()->isConnected())
     {
-        
+        cmd.getReplies().at(40)(cmd);             
     }
     //Utils::checkconnection(cmd.getSender());
 }

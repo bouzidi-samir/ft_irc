@@ -14,6 +14,7 @@ User::User(int fd, std::string pass, Server *serv)
 	this->username = "";
 	this->realname = "";
 	this->hostname = "";
+	this->_mode = "w";
 }
 
 User	*User::clone() const
@@ -41,6 +42,8 @@ std::string User::getUsername() const {return this->username;}
 std::string User::getNickname() const {return this->nickname;}
 
 std::string User::getPass() const {return this->_pass;}
+
+std::string User::getMode() const {return this->_mode;}
 
 Server *User::getServ() const {return this->_serv;}
 

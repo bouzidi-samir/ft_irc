@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:05:16 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/23 16:02:29 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/28 15:42:10 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ bool JoinError(Command cmd) {
     if (!cmd.getSender()->isConnected())
 	{
         Utils::sendMessage(cmd.getSender(), "You are not connected.\n");
+        return false;
+    }
+    if (cmd.getArgs().size() == 0)
+    {
+		cmd.getReplies().at(461)(cmd);
         return false;
     }
 	if (cmd.getArgs().size() != 1)

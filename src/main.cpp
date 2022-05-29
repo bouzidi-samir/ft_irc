@@ -17,12 +17,7 @@ void checkArguments(int ac, char **av) {
             return;
         }
     }
-    
-    //if (std::strcmp(av[2], PASSWORD)) 
-    //throw	std::runtime_error(err_mess);
 }
-
-
 
 int main (int ac, char **av) {
 

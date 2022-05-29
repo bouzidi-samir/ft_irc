@@ -4,7 +4,8 @@ SRCS = src/main.cpp src/server.cpp src/Utils.cpp src/User.cpp\
 	src/Command.cpp src/CommandList/CommandList.cpp src/Channel.cpp\
 	src/CommandList/NickCmd.cpp src/CommandList/UserCmd.cpp\
 	src/CommandList/PassCmd.cpp src/CommandList/JoinCmd.cpp\
-	src/CommandList/PingCmd.cpp src/Replies.cpp 
+	src/CommandList/PingCmd.cpp src/CommandList/ModeCmd.cpp\
+	src/Replies.cpp 
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

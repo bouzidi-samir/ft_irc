@@ -14,4 +14,6 @@ std::string Channel::getName() const {return _name;};
             
 std::string Channel::getTopic() const {return _topic;};
             
+std::string Channel::getMode() const {return _mode;};
+
 std::vector<User*> Channel::getMemberlist() const {return _memberlist;};
