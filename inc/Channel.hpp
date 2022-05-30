@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:52 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 16:09:17 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:02:12 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Channel {
             std::string getMode() const;
             std::vector<User*> getMemberlist() const;
             void addMember(User *usr);
+            void sendTomembers(std::string message);
 };
 
 
