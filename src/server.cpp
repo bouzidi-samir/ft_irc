@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/30 16:46:21 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:54:02 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,21 @@ void    Server::fdDelete() {
 	}
 	for (int i = 0; i < 300; i++)
 		deleteList[i] = 0;
+}
+
+void    Server::deleteChannel(std::string name) {
+	
+	std::map<std::string, Channel*>::iterator it1 = _channelList.begin();
+	std::map<std::string, Channel*>::iterator it1e = _channelList.end();
+
+	for (; it1 != it1e; it1++) {
+
+		if ((it1)->first == name)
+		{
+			delete (it1)->second;
+			_channelList.erase(it1->first);
+		}
+	}
 }
 
 void Server::freeServer() {

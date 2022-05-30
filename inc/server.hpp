@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 16:29:59 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 19:51:01 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ class Server {
         std::vector<User*> getUserlist() const;
         std::map<std::string, Channel*> getChannelist() const;
         void    fdDelete();
+        void    deleteChannel(std::string name);
         void    readClient(int cs);
         void    bufferParse(std::vector<std::string> list, int cs);
         bool    isCommand(std::string cmd);
