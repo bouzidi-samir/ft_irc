@@ -25,6 +25,7 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_replies[432] = &ERR_ERRONEUSNICKNAME;
 	_replies[433] = &ERR_NICKNAMEINUSE;
 	_replies[461] = &ERR_NEEDMOREPARAMS;
+	_replies[462] = &ERR_ALREADYREGISTRED;
 	_replies[464] =  &ERR_PASSWDMISMATCH;
 	_replies[501] = &ERR_UMODEUNKNOWNFLAG;
 	_replies[502] = &ERR_USERSDONTMATCH;

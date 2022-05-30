@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:43:07 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 16:40:23 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:10:36 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,13 @@ void RPL_YOUREOPER(Command cmd) {
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
    
+}
+
+void  ERR_ALREADYREGISTRED(Command cmd) {
+
+    std::string mess = PREFIX " 462 " + cmd.getSender()->getNickname() +
+    " :You may not reregister\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+    
 }

@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:38 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 16:46:30 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 20:36:38 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class Command;
 void RPL_WELCOME(Command cmd);
 void RPL_HOST(Command cmd);
 void RPL_ENDOFMOTD(Command cmd);
+
+//Replies for PASS:
+
+void ERR_ALREADYREGISTRED(Command cmd);
 
 //Replies for MODE:
 
