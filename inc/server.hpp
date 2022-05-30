@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 19:51:01 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:48:53 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Server {
         fd_set  _fd_read;
         int _max;
         int _maxfd;
+        bool _nc;
         int deleteList[300];
         std::vector<User*> _users;
         std::map<std::string, void (*)(Command) > _commandList;

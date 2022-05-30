@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/30 19:54:02 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:16:50 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,8 @@ void Server::bufferParse(std::vector<std::string> list, int cs) {
 		end = std::string(buffer).find_first_of("\r\n", start);
 		temp = std::string(buffer).substr(start + 1, (end - start));	
 		args = Utils::map_split(temp, ' ');
-		//args[args.size() - 1] = args[args.size() - 1].substr(0, args[0].size() - 1);
+	
+		//args[args.size() - 1] = args[args.size() - 1].substr(0, args[args.size() - 1].size() - 1);
 		if (isCommand(cmd) == true)
 		{
 			Command ret(cmd, args, getUserBysock(cs));
