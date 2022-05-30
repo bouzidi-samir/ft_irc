@@ -12,6 +12,7 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_commandList["USER"] = &UserCommand;
 	_commandList["PING"] = &PingCommand;
 	_commandList["MODE"] = &ModeCommand;
+	_commandList["OPER"] = &OperCommand;
 	_commandList["JOIN"] = &JoinCommand;
 
 	_replies[1] = &RPL_WELCOME;
@@ -19,10 +20,12 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_replies[221] = &RPL_UMODEIS;
 	_replies[40] = &NICKCHANGED;
 	_replies[376] = &RPL_ENDOFMOTD;
+	_replies[381] = &RPL_YOUREOPER;
 	_replies[431] = &ERR_NONICKNAMEGIVEN;
 	_replies[432] = &ERR_ERRONEUSNICKNAME;
 	_replies[433] = &ERR_NICKNAMEINUSE;
 	_replies[461] = &ERR_NEEDMOREPARAMS;
+	_replies[464] =  &ERR_PASSWDMISMATCH;
 	_replies[501] = &ERR_UMODEUNKNOWNFLAG;
 	_replies[502] = &ERR_USERSDONTMATCH;
 }
@@ -71,8 +74,6 @@ bool Command::checkconnection(User *usr) {
 	if (!usr->isAuthentified() || !usr->isRegistred())
 		return false;
 	usr->setConnected(true);
-	this->freenode(*this);
-	//this->getReplies().at(40)(*this);
 	this->getReplies().at(1)(*this);
 	this->getReplies().at(2)(*this);
 	this->getReplies().at(376)(*this);

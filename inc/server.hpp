@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:13 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 16:48:01 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:29:59 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Server {
     private:
         int port;
         std::string _password;
+        std::string _operpass;
         int _sockfd;
         struct sockaddr_in	_address; 
         socklen_t _cslen;
@@ -64,6 +65,7 @@ class Server {
         void    commandManager(User *user, std::vector<std::string> cmd);
         User	*getUserBysock(int cs);
         User	*getUserByname(std::string name);
+        std::string getOperpass() const;
         std::vector<User*> getUserlist() const;
         std::map<std::string, Channel*> getChannelist() const;
         void    fdDelete();

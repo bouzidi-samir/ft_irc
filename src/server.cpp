@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/28 16:48:36 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:46:21 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Server::Server(int port, std::string password) {
 	
 	this->port = port;
 	this->_password = password;
+	this->_operpass = "poutine";
 
 	Channel *welcome = new Channel("welcome");
 	
@@ -25,6 +26,8 @@ Server::Server(int port, std::string password) {
 	_commandList["NICK"] = &NickCommand;
 	_commandList["USER"] = &UserCommand;
 	_commandList["PING"] = &PingCommand;
+	_commandList["MODE"] = &ModeCommand;
+	_commandList["OPER"] = &OperCommand;
 	_commandList["JOIN"] = &JoinCommand;
 }
 
@@ -59,6 +62,8 @@ User					*Server::getUserByname(std::string name)
 	}
 	return (nullptr);
 }
+
+std::string Server::getOperpass() const {return _operpass;}
 
 void Server::initServer()
 {

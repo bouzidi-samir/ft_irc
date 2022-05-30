@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:38 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 19:53:49 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:46:30 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void RPL_ENDOFMOTD(Command cmd);
 void RPL_UMODEIS(Command cmd);
 void ERR_USERSDONTMATCH(Command cmd);
 void ERR_UMODEUNKNOWNFLAG(Command cmd);
+
+//Replies for OPER:
+
+void ERR_PASSWDMISMATCH(Command cmd);
+void RPL_YOUREOPER(Command cmd);
+
 
 //Replies for the NICK command:
 

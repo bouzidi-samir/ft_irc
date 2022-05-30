@@ -6,26 +6,13 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:43:07 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 20:54:37 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:40:23 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Replies.hpp"
 
 //Replie for the connection command:
-
-void freenode (Command cmd) {
-
-    std::string irssi1 = PREFIX " NOTICE * :*** Looking up your ident...\r\n";
-    std::string irssi2 = PREFIX " NOTICE * :*** Looking up your hostname...\r\n";
-    std::string irssi3 = PREFIX " NOTICE * :*** Found your hostname (177.10.22.109.rev.sfr.net)\r\n";
-    std::string irssi4 = PREFIX " CAP * LS :account-notify account-tag away-notify batch cap-notify chghost draft/relaymsg echo-message extended-join inspircd.org/poison inspircd.org/standard-replies invite-notify labeled-response message-tags multi-prefix sasl server-time setname userhost-in-names\r\n";
-    send(cmd.getSender()->getSocket(), irssi1.c_str(), irssi2.length(), 0);
-    send(cmd.getSender()->getSocket(), irssi2.c_str(), irssi2.length(), 0);
-    send(cmd.getSender()->getSocket(), irssi3.c_str(), irssi2.length(), 0);
-    send(cmd.getSender()->getSocket(), irssi4.c_str(), irssi2.length(), 0);
-}
-
 
 void RPL_WELCOME(Command cmd) {
 
@@ -63,14 +50,16 @@ void RPL_UMODEIS(Command cmd) {
 
 void ERR_USERSDONTMATCH(Command cmd) {
 
-    std::string mess = PREFIX " 502 :Cant change mode for other users\r\n";
+    std::string mess = PREFIX " 502 " + cmd.getSender()->getNickname() + 
+    " :Cant change mode for other users\r\n";
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);     
 }
 
 void ERR_UMODEUNKNOWNFLAG(Command cmd) { 
 
-    std::string mess = PREFIX " 501 :Unknown MODE flag\r\n";
+    std::string mess = PREFIX " 501 " + cmd.getSender()->getNickname() +  
+    " :Unknown MODE flag\r\n";
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0); 
 
@@ -93,7 +82,8 @@ void NICKCHANGED(Command cmd) {
 
 void  ERR_NONICKNAMEGIVEN(Command cmd) {
 
-    std::string mess = PREFIX " 431 :No nickname given\r\n";
+    std::string mess = PREFIX " 431 " + cmd.getSender()->getNickname() +
+    " :No nickname given\r\n";
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
 }
@@ -116,7 +106,28 @@ void ERR_NICKNAMEINUSE(Command cmd) {
 
 void ERR_NEEDMOREPARAMS(Command cmd) { 
     
-    std::string mess = PREFIX " " + cmd.getCommand() + " 461 :Not enough parameters\r\n";
+    std::string mess = PREFIX " 461 " + cmd.getSender()->getNickname() + 
+     " " + cmd.getCommand() + " :Not enough parameters\r\n";
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+}
+
+//replies for OPER command:
+
+void ERR_PASSWDMISMATCH(Command cmd) {
+
+    std::string mess = PREFIX " 464 " + cmd.getSender()->getNickname() +
+    " :Password incorrect\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+
+}
+
+void RPL_YOUREOPER(Command cmd) {
+
+    std::string mess = PREFIX " 381 " + cmd.getSender()->getNickname() +
+    " :You are now an IRC operator\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+   
 }

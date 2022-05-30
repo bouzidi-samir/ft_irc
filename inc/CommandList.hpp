@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 19:41:19 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 23:44:02 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:43:52 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void UserCommand(Command cmd);
 void PingCommand(Command cmd);
 void ModeCommand(Command cmd);
 void JoinCommand(Command cmd);
-
+void OperCommand(Command cmd);
 
 
 

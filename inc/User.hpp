@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 00:46:52 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:23:47 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ class User {
         void setConnected(bool statue);
         void setAuthentified(bool statue);
         void setChannel(Channel *channel);
+        void setMode(std::string mode);
 };
 
