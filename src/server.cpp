@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/31 14:53:04 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:02:26 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,9 +152,7 @@ void Server::bufferParse(std::vector<std::string> list, int cs) {
 		end = std::string(buffer).find_first_of("\r\n", start);
 		temp = std::string(buffer).substr(start + 1, (end - start));	
 		args = Utils::map_split(temp, ' ');
-		if (cmd == "CAP")
-			_nc = false;
-		if (_nc == true)
+		if (args[args.size() - 1][args[args.size() - 1].size() - 1] == '\n')
 			args[args.size() - 1] = args[args.size() - 1].substr(0, args[args.size() - 1].size() - 1);
 		if (isCommand(cmd) == true)
 		{
