@@ -65,6 +65,8 @@ void User::setChannel(Channel *channel) {this->_channel = channel;}
 
 void User::setAuthentified(bool statue) {this->_authentified = statue;}
 
+void User::setAccepted(bool statue) {this->_accepted = statue;}
+
 void User::setMode(std::string mode) {this->_mode = mode;}
 
 bool	User::isConnected() const  {return this->_connected;}
@@ -72,3 +74,5 @@ bool	User::isConnected() const  {return this->_connected;}
 bool	User::isAuthentified() const  {return this->_authentified;}
 
 bool	User::isRegistred() const  {return this->_registred;}
+
+bool	User::isAccepted() const  {return this->_accepted;}

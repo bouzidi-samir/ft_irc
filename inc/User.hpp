@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 16:23:47 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:27:57 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class User {
         Server *_serv;
         bool _registred;
         bool _authentified;
+        bool _accepted;
         bool _connected;
         int _socket;
         std::string nickname;
@@ -49,6 +50,7 @@ class User {
         bool    isConnected() const;
         bool    isAuthentified() const;
         bool    isRegistred() const;
+        bool    isAccepted() const;
         std::string getNickname() const;
         std::string getUsername() const;
         std::string getRealname() const;
@@ -64,6 +66,7 @@ class User {
         void setRegistred(bool statue);
         void setConnected(bool statue);
         void setAuthentified(bool statue);
+        void setAccepted(bool statue);
         void setChannel(Channel *channel);
         void setMode(std::string mode);
 };
