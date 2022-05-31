@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 08:47:31 by asebrech          #+#    #+#             */
-/*   Updated: 2022/05/31 12:58:09 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:53:04 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Server::Server(int port, std::string password) {
 	this->_operpass = "poutine";
 
 	Channel *welcome = new Channel("welcome");
-	
+	this->_nc = true;
 	_channelList["Welcome"] = welcome;
 	
 	_commandList["PASS"] = &PassCommand;
@@ -152,8 +152,10 @@ void Server::bufferParse(std::vector<std::string> list, int cs) {
 		end = std::string(buffer).find_first_of("\r\n", start);
 		temp = std::string(buffer).substr(start + 1, (end - start));	
 		args = Utils::map_split(temp, ' ');
-	
-		//args[args.size() - 1] = args[args.size() - 1].substr(0, args[args.size() - 1].size() - 1);
+		if (cmd == "CAP")
+			_nc = false;
+		if (_nc == true)
+			args[args.size() - 1] = args[args.size() - 1].substr(0, args[args.size() - 1].size() - 1);
 		if (isCommand(cmd) == true)
 		{
 			Command ret(cmd, args, getUserBysock(cs));
