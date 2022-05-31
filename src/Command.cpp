@@ -72,7 +72,7 @@ bool Command::checkconnection(User *usr) {
 	std::string red = "\x1b[31m";
 	std::string white = "\033[0m";
 	
-	if (!usr->isAuthentified() || !usr->isRegistred())
+	if (!usr->isAuthentified() || !usr->isRegistred() || usr->isConnected())
 		return false;
 	usr->setConnected(true);
 	this->getReplies().at(1)(*this);

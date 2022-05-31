@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:56:40 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/27 00:10:42 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:17:24 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void UserCommand(Command cmd) {
 
     if (isConnected)
     {    
-        Utils::sendMessage(cmd.getSender(), "You are already registred.\n");
+        cmd.getReplies().at(462)(cmd);
         return;
     }
     if (cmd.getArgs().size() != 4)
     {
-        Utils::sendMessage(cmd.getSender(), "Not enough parameters.\n");
-         return;
+        cmd.getReplies().at(461)(cmd);
+        return;
     }
 	if (cmd.getSender()->getUsername() == "")
 	{

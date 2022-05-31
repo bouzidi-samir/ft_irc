@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/31 14:35:58 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:21:20 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ void NickCommand(Command cmd) {
     }
     cmd.getSender()->setNickname(cmd.getArgs()[0]);
     cmd.getSender()->setRegistred(true);
-    //Utils::checkconnection(cmd.getSender());
+    //cmd.checkconnection(cmd.getSender());
 }
