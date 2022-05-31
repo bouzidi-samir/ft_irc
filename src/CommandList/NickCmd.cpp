@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:01:46 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 22:20:11 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:35:58 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void NickCommand(Command cmd) {
         return;
     if (isAvailable(cmd) == false)
         return;
-    cmd.getSender()->setNickname(cmd.getArgs()[0]);
-    cmd.getSender()->setRegistred(true);
     if (cmd.getSender()->isConnected())
     {
         cmd.getReplies().at(40)(cmd);             
     }
+    cmd.getSender()->setNickname(cmd.getArgs()[0]);
+    cmd.getSender()->setRegistred(true);
     //Utils::checkconnection(cmd.getSender());
 }

@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:43:07 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 21:10:36 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/05/31 14:37:05 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,12 @@ void NICKCHANGED(Command cmd) {
     std::vector<User*>::iterator it = Userlist.begin();
 	std::vector<User*>::iterator ite = Userlist.end();
     std::string nickname = cmd.getArgs()[0];
-    std::string mess = PREFIX " NICK :" + nickname + "\r\n";
-    //send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+
+    std::string mess1 = ":" + cmd.getSender()->getNickname() + "!" + cmd.getSender()->getNickname()
+    + "@" + cmd.getSender()->getHostname() + " NICK :" + nickname + "\r\n";
+    
     for ( ; it != ite; it++) {
-        send((*it)->getSocket(), mess.c_str(), mess.length(), 0);
+        send((*it)->getSocket(), mess1.c_str(), mess1.length(), 0);
    }
 }
 
