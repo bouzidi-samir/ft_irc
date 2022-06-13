@@ -43,7 +43,7 @@ std::string User::getNickname() const {return this->nickname;}
 
 std::string User::getPass() const {return this->_pass;}
 
-std::string User::getMode() const {return this->_mode;}
+std::string const &User::getMode() const {return this->_mode;}
 
 Server *User::getServ() const {return this->_serv;}
 

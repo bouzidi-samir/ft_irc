@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:43:07 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/31 14:37:05 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:41:53 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ void RPL_ENDOFMOTD(Command cmd) {
     std::string irssi2 = PREFIX " 376 " + cmd.getSender()->getNickname() + " :End of /MOTD command\r\n";
     send(cmd.getSender()->getSocket(), irssi2.c_str(), irssi2.length(), 0);
 }
+
+//PING:
+
+void ERR_NOORIGIN(Command cmd) {
+     
+    std::string mess = PREFIX " 409 " + cmd.getSender()->getNickname() +
+    " :No origin specified\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+
+}
+
 
 //Replies for the MODE command :
 
@@ -141,4 +153,22 @@ void  ERR_ALREADYREGISTRED(Command cmd) {
 
     send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
     
+}
+
+//Replies for the JOIN command:
+
+void ERR_BADCHANMASK(Command cmd) {
+
+    std::string mess = PREFIX " 476 " + cmd.getSender()->getNickname() + 
+    " " + cmd.getArgs()[0] + " :Bad Channel Mask\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
+}
+
+void ERR_INVITEONLYCHAN(Command cmd) {
+
+    std::string mess = PREFIX " 473 " + cmd.getSender()->getNickname() + 
+    " " + cmd.getArgs()[0] + " :Cannot join channel (+i)\r\n";
+
+    send(cmd.getSender()->getSocket(), mess.c_str(), mess.length(), 0);
 }

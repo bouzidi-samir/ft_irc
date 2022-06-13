@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:45:38 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/30 20:36:38 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:42:11 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void RPL_WELCOME(Command cmd);
 void RPL_HOST(Command cmd);
 void RPL_ENDOFMOTD(Command cmd);
 
+//Replies for PING:
+
+void ERR_NOORIGIN(Command cmd);
+
 //Replies for PASS:
 
 void ERR_ALREADYREGISTRED(Command cmd);
@@ -40,6 +44,10 @@ void ERR_UMODEUNKNOWNFLAG(Command cmd);
 void ERR_PASSWDMISMATCH(Command cmd);
 void RPL_YOUREOPER(Command cmd);
 
+//Replies for JOIN:
+
+void ERR_BADCHANMASK(Command cmd);
+void ERR_INVITEONLYCHAN(Command cmd);
 
 //Replies for the NICK command:
 

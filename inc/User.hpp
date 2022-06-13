@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:57:26 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/31 15:27:57 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:24:45 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ class User {
         std::string getUsername() const;
         std::string getRealname() const;
         std::string getHostname() const;
-        std::string getMode() const;
+        std::string const &getMode() const;
         std::string getPass() const;
         Channel *getChannel() const;
         Server *getServ() const;

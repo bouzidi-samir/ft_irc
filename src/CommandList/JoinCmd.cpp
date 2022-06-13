@@ -6,13 +6,15 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:05:16 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/05/28 15:42:10 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/06/13 13:17:07 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/CommandList.hpp"
 
 bool JoinError(Command cmd) {
+
+   // Channel *chan = cmd.getSender()->getServ()->getChannelist()[cmd.getArgs()[0]];
 
     if (!cmd.getSender()->isConnected())
 	{
@@ -24,11 +26,20 @@ bool JoinError(Command cmd) {
 		cmd.getReplies().at(461)(cmd);
         return false;
     }
-	if (cmd.getArgs().size() != 1)
+    if (cmd.getArgs()[0][0] != '#')
 	{
-        Utils::sendMessage(cmd.getSender(), "Not enough parameters.\n");
-    	return false;
-    }  
+		cmd.getReplies().at(476)(cmd);
+		return false;
+	}
+    //if (chan->getMode().find('i') != std::string::npos)
+	//{
+	//	cmd.getReplies().at(473)(cmd);
+	//	return false;
+	//}
+    
+    
+    
+    
     return true;
 }
 
@@ -52,13 +63,5 @@ void JoinCommand(Command cmd) {
     std::map<std::string, Channel*> channelist = cmd.getSender()->getServ()->getChannelist();
     if (!JoinError(cmd))
         return;
-//    if (isOnServer)
-//    {
-
-
-//    }
-//    else
-//    {
-//        Channel *chan = new Channel(cmd.getArgs()[0]);
-//    }
+   
 }

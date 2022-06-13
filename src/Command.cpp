@@ -21,12 +21,15 @@ Command::Command(std::string cmd, std::map<size_t, std::string> args, User *usr)
 	_replies[40] = &NICKCHANGED;
 	_replies[376] = &RPL_ENDOFMOTD;
 	_replies[381] = &RPL_YOUREOPER;
+	_replies[409] =	&ERR_NOORIGIN;
 	_replies[431] = &ERR_NONICKNAMEGIVEN;
 	_replies[432] = &ERR_ERRONEUSNICKNAME;
 	_replies[433] = &ERR_NICKNAMEINUSE;
 	_replies[461] = &ERR_NEEDMOREPARAMS;
 	_replies[462] = &ERR_ALREADYREGISTRED;
 	_replies[464] =  &ERR_PASSWDMISMATCH;
+	_replies[473] = &ERR_INVITEONLYCHAN;
+	_replies[476] =  &ERR_BADCHANMASK;
 	_replies[501] = &ERR_UMODEUNKNOWNFLAG;
 	_replies[502] = &ERR_USERSDONTMATCH;
 }
@@ -52,19 +55,6 @@ void Command::runCommand() {
 		}
 	}
 }
-
-void Command::freenode (Command cmd) {
-
-    std::string irssi1 = PREFIX " NOTICE * :*** Looking up your ident...\r\n";
-    std::string irssi2 = PREFIX " NOTICE * :*** Looking up your hostname...\r\n";
-    std::string irssi3 = PREFIX " NOTICE * :*** Found your hostname (177.10.22.109.rev.sfr.net)\r\n";
-    std::string irssi4 = PREFIX " CAP * LS :account-notify account-tag away-notify\r\n";
-    //send(cmd.getSender()->getSocket(), irssi1.c_str(), irssi2.length(), 0);
-   // send(cmd.getSender()->getSocket(), irssi2.c_str(), irssi2.length(), 0);
-   // send(cmd.getSender()->getSocket(), irssi3.c_str(), irssi2.length(), 0);
-    send(cmd.getSender()->getSocket(), irssi4.c_str(), irssi2.length(), 0);
-}
-
 
 bool Command::checkconnection(User *usr) {
 
